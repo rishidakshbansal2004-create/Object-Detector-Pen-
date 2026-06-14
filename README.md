@@ -1,88 +1,181 @@
 # Pen Detector 🖊️
 
-A real-time pen detection system built with **YOLOv8** and **OpenCV**. The model is fine-tuned on a custom dataset to detect pens through a live webcam feed.
+A real-time pen detection system built using **YOLOv8** and **OpenCV**. The model is fine-tuned on a custom dataset to accurately detect pens through a live webcam feed, drawing bounding boxes and confidence scores in real time.
+
+---
 
 ## Demo
 
-Run `webcam.py` to see live detection through your webcam — bounding boxes and confidence scores are drawn around detected pens in real time.
+Run `webcam.py` to start live pen detection using your webcam.
+
+### Sample Detection
+
+> Add screenshots or a GIF here to showcase real-time detection.
+
+```md
+![Detection Demo](demo.gif)
+```
+
+---
 
 ## Project Overview
 
-This project demonstrates an end-to-end object detection pipeline:
+This project demonstrates a complete custom object detection pipeline, from data collection to real-time deployment.
 
-1. **Data Collection** – Collected ~120 images of pens in varied angles, backgrounds, and lighting conditions.
-2. **Annotation** – Labeled images using [Roboflow](https://roboflow.com), exporting in YOLOv8 format.
-3. **Training** – Fine-tuned a pretrained `yolov8n` model on the custom dataset.
-4. **Inference** – Built a real-time webcam detection script using OpenCV.
+### Workflow
+
+1. **Data Collection**
+   - Collected and curated 120+ images of pens in different orientations, lighting conditions, and backgrounds.
+
+2. **Annotation**
+   - Annotated images using Roboflow and exported them in YOLOv8 format.
+
+3. **Training**
+   - Fine-tuned a pretrained YOLOv8n model on the custom dataset.
+
+4. **Inference**
+   - Developed a real-time detection application using OpenCV and webcam input.
+
+---
+
+## Model Details
+
+| Property | Value |
+|----------|---------|
+| Model | YOLOv8n (Nano) |
+| Task | Single-Class Object Detection |
+| Framework | Ultralytics YOLOv8 |
+| Backend | PyTorch |
+| Training Epochs | 80 |
+
+---
 
 ## Results
 
-The model was trained for 80 epochs on a custom dataset of pen images.
+The model was trained for 80 epochs and evaluated on a validation dataset.
 
 | Metric | Score |
-|---|---|
+|----------|---------|
 | Precision | 0.960 |
 | Recall | 0.851 |
-| mAP50 | 0.926 |
-| mAP50-95 | 0.522 |
+| mAP@50 | 0.926 |
+| mAP@50-95 | 0.522 |
+
+### Training Visualizations
+
+> Add YOLO-generated evaluation plots for better project presentation.
+
+```md
+![Results](results.png)
+![Confusion Matrix](confusion_matrix.png)
+```
+
+---
 
 ## Tech Stack
 
-- **YOLOv8** (Ultralytics) – object detection model
-- **OpenCV** – webcam capture and visualization
-- **Roboflow** – dataset annotation and preprocessing
-- **PyTorch** – underlying deep learning framework
+- **YOLOv8 (Ultralytics)** – Object Detection
+- **OpenCV** – Webcam Capture & Visualization
+- **PyTorch** – Deep Learning Framework
+- **Roboflow** – Data Annotation & Preprocessing
 
-## Setup & Usage
+---
 
-### 1. Clone the repository
+## Installation
 
-\`\`\`bash
-git clone <your-repo-url>
-cd Object-Detector-Pen-
-\`\`\`
+### 1. Clone the Repository
 
-### 2. Install dependencies
+```bash
+git clone <your-repository-url>
+cd pen-detector
+```
 
-\`\`\`bash
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Or install manually:
+
+```bash
 pip install ultralytics opencv-python
-\`\`\`
+```
 
-### 3. Run live webcam detection
+---
 
-\`\`\`bash
+## Usage
+
+### Real-Time Detection
+
+```bash
 python webcam.py
-\`\`\`
+```
 
-Press `q` to quit the webcam window.
+A webcam window will open and display detected pens with bounding boxes and confidence scores.
 
-### 4. (Optional) Retrain the model
+Press **q** to exit.
 
-If you want to retrain on your own dataset, organize your data in YOLO format and run:
+### Retrain the Model
 
-\`\`\`bash
+```bash
 python start.py
-\`\`\`
+```
 
-Trained weights will be saved to `runs/detect/pen_detector/weights/best.pt`.
+The best-performing model weights will be automatically saved in the YOLO training output directory.
+
+---
 
 ## Project Structure
 
-\`\`\`
+```text
 .
-├── start.py          # Training script
-├── webcam.py         # Real-time webcam inference
+├── start.py
+├── webcam.py
+├── requirements.txt
+├── README.md
+├── dataset/
 ├── runs/
-│   └── detect/pen_detector/weights/best.pt   # Trained model weights
-└── README.md
-\`\`\`
+│   └── detect/
+│       └── ...
+└── assets/
+    ├── demo.gif
+    ├── results.png
+    └── confusion_matrix.png
+```
+
+---
 
 ## Future Improvements
 
-- Extend to multi-class detection (e.g., distinguishing pens vs. highlighters)
-- Expand dataset size and diversity for improved accuracy
-- Deploy as a web app using Streamlit or Flask
+- Increase dataset size for improved generalization
+- Support multiple stationery classes (pens, pencils, markers, highlighters)
+- Improve performance in challenging lighting conditions
+- Deploy as a web application using Streamlit or Flask
+- Export the model to ONNX/TensorRT for optimized inference
+
+---
+
+## Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+- Data collection and annotation
+- Custom object detection model training
+- YOLOv8 workflow and deployment
+- Real-time computer vision applications
+- OpenCV integration with deep learning models
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+---
 
 ## Author
 
-Built by Rishi as a hands-on introduction to computer vision and object detection with YOLOv8.
+**Rishi Bansal**
+
+A hands-on computer vision project exploring custom object detection using YOLOv8, covering the complete pipeline from dataset creation and annotation to training and real-time deployment.

@@ -1,0 +1,6 @@
+Pen/
+runs/
+!runs/detect/pen_detector/weights/best.pt
+__pycache__/
+.DS_Store
+yolov8n.pt

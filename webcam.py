@@ -10,7 +10,7 @@ while True:
     if not ret:
         break
 
-    results = model(frame, conf=0.4,verbose=False)
+    results = model(frame, conf=0.55,verbose=False)
     annotated_frame = results[0].plot()
 
     cv2.imshow("Pen Detector", annotated_frame)
